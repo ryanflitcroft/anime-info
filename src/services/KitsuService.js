@@ -1,9 +1,8 @@
-export const getKitsuData = async (query, type = 'anime') => {
-  const basePath = 'https://kitsu.io/api/edge/';
+export const getKitsuData = async (query) => {
+  const basePath = 'https://kitsu.io/api/edge/anime';
   const searchQuery = `?filter%5Btext%5D=${query}`;
-  const filterQuery = `?filter%5Bcategories%5D=${query}`;
 
-  const response = await fetch(`${basePath}${type}${filterQuery}`, {
+  const response = await fetch(`${basePath}${searchQuery}`, {
     headers: {
       Accept: 'application/vnd.api+json',
       'Content-Type': 'application/vnd.api+json',

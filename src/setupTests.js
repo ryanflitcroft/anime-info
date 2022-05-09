@@ -1,10 +1,15 @@
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
+import { mockKitsuData } from './fixtures/mockKitsuData';
 
-import fetch from 'cross-fetch';
-global.fetch = fetch;
+global.fetch = (...args) =>
+  import('cross-fetch').then(({ default: fetch }) => fetch(...args));
 
-const server = setupServer(rest.get('', (req, res, ctx) => res(ctx.json(''))));
+const server = setupServer(
+  rest.get('https://kitsu.io/api/edge/anime', (req, res, ctx) =>
+    res(ctx.json(mockKitsuData))
+  )
+);
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
