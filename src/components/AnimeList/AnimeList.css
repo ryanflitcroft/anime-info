@@ -2,6 +2,7 @@ img {
   width: 300px;
 }
 
-a {
-  display: block;
+section {
+  display: flex;
+  flex-direction: column;
 }

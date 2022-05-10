@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
-import AnimeDetail from '../AnimeDetail/AnimeDetail';
 import { getKitsuData } from '../../services/KitsuService';
-import Styles from './AnimeList.css';
-import Loading from '../Loading/Loading';
+import './AnimeList.css';
 
-export default function AnimeList() {
+export default function AnimeList({ setIsLoading }) {
   const [animeList, setAnimeList] = useState([]);
   const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const { url } = useRouteMatch();
-
   const DEFAULT_QUERIES = ['totoro', 'aggretsuko', 'castlevania'];
   const RANDOM_NUMBER = Math.floor(Math.random() * DEFAULT_QUERIES.length);
 
@@ -33,7 +28,6 @@ export default function AnimeList() {
     <>
       <SearchBar setSearch={setSearch} />
       <section>
-        {isLoading && <Loading />}
         {animeList.map((item, i) => (
           <Link key={`${item.id}-${i}`} to={`${item.id}`}>
             {item.titles?.en || item.titles?.ja_jp || item.titles?.en_jp}

@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getKitsuDataById } from '../../services/KitsuService';
 
-export default function AnimeDetail() {
+export default function AnimeDetail({ setIsLoading }) {
   const [anime, setAnime] = useState({});
   const { id } = useParams();
-  console.log('params id: ', id);
+  const title = anime.titles?.en || anime.titles?.ja_jp || anime.titles?.en_jp;
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       const [data] = await getKitsuDataById(id);
       setAnime(data);
+      setIsLoading(false);
     };
     getData();
   }, []);
 
   return (
     <>
-      hellllo
+      <Link to="/">Go Back</Link>
       <article>
         <figure>
-          <h2>
-            {anime.titles?.en || anime.titles?.ja_jp || anime.titles?.en_jp}
-          </h2>
-          <img
-            src={anime.posterImage}
-            alt={`Poster image for ${
-              anime.titles?.en || anime.titles?.ja_jp || anime.titles?.en_jp
-            }`}
-          />
+          <h2>{title}</h2>
+          <img src={anime.posterImage} alt={`Poster image for ${title}`} />
           <figcaption>{anime.synopsis}</figcaption>
         </figure>
       </article>
