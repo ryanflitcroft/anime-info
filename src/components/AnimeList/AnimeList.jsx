@@ -19,7 +19,7 @@ export default function AnimeList({ setIsLoading }) {
       setIsLoading(true);
       const data = await getKitsuData(search);
       setAnimeList(data);
-      // setIsLoading(false);
+      setIsLoading(false);
     };
     getData();
   }, [search]);
