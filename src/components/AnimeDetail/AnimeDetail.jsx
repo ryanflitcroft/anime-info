@@ -21,13 +21,15 @@ export default function AnimeDetail({ setIsLoading }) {
   return (
     <>
       <Link to="/">Go Back</Link>
-      <article>
+      <section>
         <figure>
           <h2>{title}</h2>
-          <img src={anime.posterImage} alt={`Poster image for ${title}`} />
+          <div>
+            <img src={anime.posterImage} alt={`Poster image for ${title}`} />
+          </div>
           <figcaption>{anime.synopsis}</figcaption>
         </figure>
-      </article>
+      </section>
     </>
   );
 }

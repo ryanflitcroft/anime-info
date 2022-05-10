@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <h1>Anime</h1>
+        <h1>アニメ</h1>
       </header>
     </>
   );
