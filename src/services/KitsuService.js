@@ -1,3 +1,5 @@
+import { handleKitsuData } from '../utils/handleKitsuData';
+
 export const getKitsuData = async (query) => {
   const basePath = 'https://kitsu.io/api/edge/anime';
   const searchQuery = `?filter%5Btext%5D=${query}`;
@@ -9,7 +11,7 @@ export const getKitsuData = async (query) => {
     },
   });
 
-  const { data, links } = await response.json();
+  const { data } = await response.json();
 
-  return { data, links };
+  return handleKitsuData(data);
 };

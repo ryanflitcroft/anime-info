@@ -6,7 +6,7 @@ export default function SearchBar({ setSearch }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(searchInput);
-    setSearchInput('');
+    // setSearchInput('');
   };
 
   return (

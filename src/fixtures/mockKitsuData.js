@@ -50,6 +50,7 @@ export const mockKitsuData = {
           original:
             'https://media.kitsu.io/anime/poster_images/467/original.jpg',
         },
+        coverImage: null,
       },
     },
     {
@@ -73,6 +74,7 @@ export const mockKitsuData = {
           original:
             'https://media.kitsu.io/anime/poster_images/40788/original.jpg',
         },
+        coverImage: null,
       },
     },
     {

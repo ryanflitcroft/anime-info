@@ -6,8 +6,8 @@ export const handleKitsuData = (data) => {
     synopsis: i.attributes.synopsis,
     description: i.attributes.description,
     titles: i.attributes.titles,
-    posterImage: i.attributes.posterImage.original,
-    coverImage: i.attributes.coverImage.original,
+    posterImage: i.attributes.posterImage?.original,
+    coverImage: i.attributes.coverImage?.original,
     startDate: i.attributes.startDate,
     endDate: i.attributes.endDate,
   }));

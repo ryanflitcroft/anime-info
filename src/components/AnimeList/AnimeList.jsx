@@ -23,12 +23,11 @@ export default function AnimeList() {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      const { data } = await getKitsuData(search);
+      const data = await getKitsuData(search);
       setAnimeList(data);
       setIsLoading('false');
     };
     getData();
-    console.log(animeList);
   }, [search]);
 
   return (
