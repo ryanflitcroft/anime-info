@@ -265,3 +265,35 @@ export const mockKitsuData = {
     last: 'https://kitsu.io/api/edge/anime?filter%5Btext%5D=totoro&page%5Blimit%5D=10&page%5Boffset%5D=673',
   },
 };
+
+export const mockKitsuDataById = {
+  data: {
+    id: '41204',
+    type: 'anime',
+    links: {
+      self: 'https://kitsu.io/api/edge/anime/41204',
+    },
+    attributes: {
+      synopsis:
+        'The series follows Retsuko, a red panda office worker who unleashes her frustrations with life via death metal karaoke.',
+      description:
+        'The series follows Retsuko, a red panda office worker who unleashes her frustrations with life via death metal karaoke.',
+      titles: {
+        en: 'Aggretsuko',
+        en_jp: 'Aggressive Retsuko (ONA)',
+        en_us: 'Aggretsuko',
+        ja_jp: 'アグレッシブ烈子',
+      },
+      startDate: '2018-04-20',
+      endDate: '2018-04-20',
+      posterImage: {
+        original:
+          'https://media.kitsu.io/anime/poster_images/41204/original.jpg',
+      },
+      coverImage: {
+        original:
+          'https://media.kitsu.io/anime/cover_images/41204/original.png',
+      },
+    },
+  },
+};

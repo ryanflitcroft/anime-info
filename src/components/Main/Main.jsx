@@ -8,11 +8,11 @@ export default function Main() {
     <>
       <main>
         <Switch>
-          <Route path="/">
-            <AnimeList />
-          </Route>
           <Route path="/:id">
             <AnimeDetail />
+          </Route>
+          <Route path="/">
+            <AnimeList />
           </Route>
         </Switch>
       </main>
