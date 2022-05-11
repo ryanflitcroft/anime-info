@@ -134,5 +134,22 @@ describe('renders component Main', () => {
         /the series follows retsuko, a red panda office worker who unleashes her frustrations with life via death metal karaoke\./i
       );
     });
+
+    userEvent.click(backButton);
+
+    screen.getByTestId('loading-spinner');
+    screen.getByText(/読み込み中/i);
+
+    await waitFor(() => {
+      screen.getByRole('region', {
+        name: /container for search results/i,
+      });
+      screen.getByRole('heading', {
+        level: 2,
+      });
+      screen.getByRole('list');
+      screen.getAllByRole('listitem');
+      screen.getAllByRole('link');
+    });
   });
 });
