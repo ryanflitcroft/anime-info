@@ -1,0 +1,17 @@
+div.loading {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 5px solid #d3d3d3;
+  border-top: 5px solid #3d3d3d;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
