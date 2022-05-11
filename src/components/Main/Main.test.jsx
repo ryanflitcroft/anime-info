@@ -29,8 +29,8 @@ describe('renders component Main', () => {
       </MemoryRouter>
     );
 
-    const loadingSpinner = screen.getByTestId('loading-spinner');
-    const loading = screen.getByText(/読み込み中/i);
+    // const loadingSpinner = screen.getByTestId('loading-spinner');
+    // const loading = screen.getByText(/読み込み中/i);
 
     const form = screen.getByRole('form', {
       name: /search kitsu for anime by title name or title/i,
@@ -41,7 +41,7 @@ describe('renders component Main', () => {
       name: /search/i,
     });
 
-    waitForElementToBeRemoved(loading);
+    // waitForElementToBeRemoved(loading);
 
     await waitFor(() => {
       const section = screen.getByRole('region', {
@@ -66,10 +66,10 @@ describe('renders component Main', () => {
       name: /castlevania/i,
     });
 
-    screen.getByTestId('loading-spinner');
-    const reloading = screen.getByText(/読み込み中/i);
+    // screen.getByTestId('loading-spinner');
+    // const reloading = screen.getByText(/読み込み中/i);
 
-    waitForElementToBeRemoved(reloading);
+    // waitForElementToBeRemoved(reloading);
 
     await waitFor(() => {
       const section = screen.getByRole('region', {
@@ -111,9 +111,9 @@ describe('renders component Main', () => {
       )
     );
 
-    screen.getByTestId('loading-spinner');
-    const loading = screen.getByText(/読み込み中/i);
-    waitForElementToBeRemoved(loading);
+    // screen.getByTestId('loading-spinner');
+    // const loading = screen.getByText(/読み込み中/i);
+    // waitForElementToBeRemoved(loading);
 
     const backButton = screen.getByRole('link', {
       name: /go back/i,
@@ -137,8 +137,8 @@ describe('renders component Main', () => {
 
     userEvent.click(backButton);
 
-    screen.getByTestId('loading-spinner');
-    screen.getByText(/読み込み中/i);
+    // screen.getByTestId('loading-spinner');
+    // screen.getByText(/読み込み中/i);
 
     await waitFor(() => {
       screen.getByRole('region', {
