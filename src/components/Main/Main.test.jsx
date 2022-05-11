@@ -29,11 +29,9 @@ describe('renders component Main', () => {
       </MemoryRouter>
     );
 
-    // expect loading spinner on page load
     const loadingSpinner = screen.getByTestId('loading-spinner');
     const loading = screen.getByText(/読み込み中/i);
 
-    // expect search form on page load
     const form = screen.getByRole('form', {
       name: /search kitsu for anime by title name or title/i,
     });
@@ -44,10 +42,8 @@ describe('renders component Main', () => {
     });
 
     waitForElementToBeRemoved(loading);
-    // expect loading spinner to be removed
 
     await waitFor(() => {
-      // expect fetched data to be displayed
       const section = screen.getByRole('region', {
         name: /container for search results/i,
       });
@@ -59,7 +55,6 @@ describe('renders component Main', () => {
       const resultLinks = screen.getAllByRole('link');
     });
 
-    // type search input, click submit button
     userEvent.type(screen.getByRole('textbox'), 'castlevania');
     userEvent.click(
       screen.getByRole('button', {
@@ -67,24 +62,16 @@ describe('renders component Main', () => {
       })
     );
 
-    // expect heading textContent to have search value
     screen.getByRole('heading', {
       name: /castlevania/i,
     });
 
-    // await waitFor(() => {
-    // expect loading spinner on userEvent click
     screen.getByTestId('loading-spinner');
     const reloading = screen.getByText(/読み込み中/i);
-    expect(reloading).toBeInTheDocument();
-    screen.debug();
 
-    // expect loading spinner to be removed
     waitForElementToBeRemoved(reloading);
-    // });
 
     await waitFor(() => {
-      // expect fetched data to be displayed
       const section = screen.getByRole('region', {
         name: /container for search results/i,
       });
@@ -94,7 +81,6 @@ describe('renders component Main', () => {
       const resultsList = screen.getByRole('list');
       const resultListItems = screen.getAllByRole('listitem');
       const resultLinks = screen.getAllByRole('link');
-      // console.log(resultLinks[0]);
 
       server.use(
         rest.get('https://kitsu.io/api/edge/anime/482', (req, res, ctx) =>
@@ -109,6 +95,44 @@ describe('renders component Main', () => {
       screen.getByRole('link', {
         name: /go back/i,
       });
+    });
+  });
+
+  it('from route /:id, should render elements link, section, figure, h2, img, figcaption', async () => {
+    render(
+      <MemoryRouter initialEntries={['/', '/482']} initialIndex={1}>
+        <App />
+      </MemoryRouter>
+    );
+
+    server.use(
+      rest.get('https://kitsu.io/api/edge/anime/482', (req, res, ctx) =>
+        res(ctx.json(mockKitsuDataById))
+      )
+    );
+
+    screen.getByTestId('loading-spinner');
+    const loading = screen.getByText(/読み込み中/i);
+    waitForElementToBeRemoved(loading);
+
+    const backButton = screen.getByRole('link', {
+      name: /go back/i,
+    });
+
+    await waitFor(() => {
+      const section = screen.getByRole('region', {
+        name: /container for anime details/i,
+      });
+      const figure = screen.getByRole('figure');
+      const heading = screen.getByRole('heading', {
+        name: /aggretsuko/i,
+      });
+      const image = screen.getByRole('img', {
+        name: /poster image for aggretsuko/i,
+      });
+      const caption = screen.getByText(
+        /the series follows retsuko, a red panda office worker who unleashes her frustrations with life via death metal karaoke\./i
+      );
     });
   });
 });

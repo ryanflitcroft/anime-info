@@ -21,7 +21,7 @@ export default function AnimeDetail({ setIsLoading }) {
   return (
     <>
       <Link to="/">Go Back</Link>
-      <section>
+      <section aria-label="container for anime details">
         <figure>
           <h2>{title}</h2>
           <div>
