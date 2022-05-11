@@ -27,7 +27,7 @@ export default function AnimeList({ setIsLoading }) {
   return (
     <>
       <SearchBar setSearch={setSearch} />
-      <section>
+      <section aria-label="container for search results">
         <h2>{search}</h2>
         <ul>
           {animeList.map((item, i) => (
